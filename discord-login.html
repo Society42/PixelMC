@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Craftopia | Login with discord</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        color: #7289da;
+      }
+
+      button {
+        background-color: #7289da;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .profile-tab {
+        margin-top: 20px;
+      }
+
+      .profile {
+        display: none;
+      }
+
+      .profile.visible {
+        display: block;
+      }
+
+      .profile-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login with Discord</h1>
+      <button id="login-btn">Login with Discord</button>
+
+      <div class="profile-tab">
+        <div class="profile">
+          <div class="profile-content">
+            <h2>User Profile</h2>
+            <p>Welcome, <span id="username"></span>!</p>
+            <img id="avatar" src="" alt="Avatar" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const loginButton = document.getElementById("login-btn");
+      const profileButton = document.getElementById("profile-btn");
+      const profileDiv = document.querySelector(".profile");
+      const usernameSpan = document.getElementById("username");
+      const avatarImg = document.getElementById("avatar");
+
+      const authorizationUrl =
+        "https://discord.com/api/oauth2/authorize?client_id=1114515351439417385&redirect_uri=http%3A%2F%2Fcraftopia.atwebpages.com%2Findex.html&response_type=code&scope=identify";
+
+      loginButton.addEventListener("click", () => {
+        window.location.href = authorizationUrl;
+      });
+
+      profileButton.addEventListener("click", () => {
+        profileDiv.classList.toggle("visible");
+      });
+    </script>
+  </body>
+</html>
